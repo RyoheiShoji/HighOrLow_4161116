@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class HighOrLow {
 	static Scanner sc  =new Scanner(System.in);
-	static String[] cmark = {"A","2","3","4","5","6","7","8","9","10","J","Q","K","Joker"};
+	static String[] cmark = {" A"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9","10"," J"," Q"," K"};
 	public static void main(String[] args) {
 		System.out.println("Hight & Low \n");
 		String s = card();
@@ -12,6 +12,7 @@ public class HighOrLow {
 			s = card();
 			}
 		System.out.println("現在のカードは" + s + "です。");
+		cardmark(s);
 		System.out.print("Highr or Low ? :");
 		judg(s,m,sc.next());
 		System.out.println("お疲れ様でした。");
@@ -33,11 +34,25 @@ public class HighOrLow {
 		}else{
 			System.out.println("残念。あなたのカードは"+ s2 + "でした。");
 		}
+		cardmark(s2);
 		System.out.println("");
 	}
 	public static String card(){
 		Random ra = new Random();
-		return cmark[ra.nextInt(13)];
+		return cmark[ra.nextInt(cmark.length-1)];
+	}
+	public static void cardmark(String s){
+		System.out.println(" ____ ");
+		for(int i = 0;i < 2;i++){
+			System.out.print("|");
+			if(i != 1){
+				System.out.print("    ");
+			}else{
+				System.out.print(s + "  ");
+			}
+			System.out.println("|");
+		}
+		System.out.println("|____|\n");
 	}
 
 }
